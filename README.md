@@ -1,7 +1,6 @@
 ### Note to the reviewers:
 
-Wish I had another day to add more test coverage.  That said, I think I got most of the major components in there. 
-- Mike
+Wish I had another day to add more test coverage.  That said, I think I got most of the major components in there. Regards, Mike
 
 
 ## BitWatch
