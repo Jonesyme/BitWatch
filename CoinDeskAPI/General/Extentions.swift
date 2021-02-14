@@ -26,10 +26,11 @@ extension Date {
     public static func getDate(string: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        if let date = dateFormatter.date(from: string) {
-            return date
+        guard let date = dateFormatter.date(from: string) else {
+            assert(false, "CoinDeskAPI: unable to parse date from string")
+            return Date()
         }
-        return Date() // this could be better...
+        return date
     }
 }
 
@@ -37,25 +38,22 @@ extension Date {
 // MARK - Float extensions
 extension Float {
     
-    // format price string using attributed font size and baseline adjustments
+    // format price string with attributed font size and baseline adjustment for the decimal portion
     public func getPrettyString(_ decimals: Int = 3, symbol: String) -> NSAttributedString {
-        
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
-        formatter.currencySymbol = symbol + " "
+        formatter.currencySymbol = symbol + ""
         formatter.maximumFractionDigits = decimals
         formatter.minimumFractionDigits = decimals
         
         let full = formatter.string(from: NSNumber.init(value: self))
         let parts = full!.split(separator: ".").map(String.init)
+
+        let prefixFont = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22.0)]
+        let postfixFont = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0), NSAttributedString.Key.baselineOffset: 5.0] as [NSAttributedString.Key : Any]
         
-        let preDecimal = parts[0] + "."
-        let posDecimal = parts[1]
-        let preDecFont = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22.0)]
-        let posDecFont = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0), NSAttributedString.Key.baselineOffset: 5.0] as [NSAttributedString.Key : Any]
-        
-        let string = NSMutableAttributedString(string: preDecimal, attributes: preDecFont)
-        string.append(NSAttributedString(string: posDecimal, attributes: posDecFont))
+        let string = NSMutableAttributedString(string: (parts[0] + "."), attributes: prefixFont)
+        string.append(NSAttributedString(string: parts[1], attributes: postfixFont))
         return string
     }
 }
