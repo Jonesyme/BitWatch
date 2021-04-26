@@ -5,7 +5,7 @@
 - BitWatch App - A universal iOS app that displays BTC prices both in-app and via Apple Watch displays
 - BitWidget - A daily widget that displays the latest BTC price
 
-**NOTE:** For an MVVMC-based approach to a similar problem, see my [BitPrice](https://github.com/Jonesyme/BitWatch) project
+**NOTE:** For an MVVMC-based approach to a similar problem, see my [BitPrice](https://github.com/Jonesyme/BitPrice) project
 
 ### Screenshots
 ![BitWatch1](https://user-images.githubusercontent.com/6075332/110270052-fce8cc80-7f92-11eb-9472-efc164cd91d8.png)
