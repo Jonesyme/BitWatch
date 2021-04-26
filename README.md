@@ -1,4 +1,5 @@
-## BitWatch
+## BitWatch - An app to fetch and display Bitcoin prices using MVC architecture
+NOTE: For an MVVMC-based approach, see my [BitPrice](https://github.com/Jonesyme/BitWatch) project
 
 ### The solution consists of three main pieces:
 - CoinDeskAPI - A shared Framework that facilitates outbound web-service calls to a CoinDeskAPI
